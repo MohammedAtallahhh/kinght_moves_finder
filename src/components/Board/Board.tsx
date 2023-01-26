@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback } from "react";
+import { FC, useState, useEffect, useCallback } from "react";
 
 import "./Board.css";
 import { generateBoard } from "./utils";
@@ -18,7 +18,6 @@ const KNIGHT_MOVES = [
 const Board: FC = () => {
   const [activePosition, setActivePosition] = useState<Postion | null>(null);
   const [board, setBoard] = useState(<></>);
-  const [moves, setMoves] = useState<Postion[] | null>(null);
 
   const findPossibleMoves = useCallback(() => {
     if (!activePosition) return;
@@ -35,13 +34,13 @@ const Board: FC = () => {
   useEffect(() => {
     // Finding knight moves on every postion change
     const newMoves = findPossibleMoves() as Postion[];
-    setMoves(newMoves);
 
     // creating new board with the new active position and corresponding moves
     const board = generateBoard(activePosition, setActivePosition, newMoves);
     setBoard(board);
   }, [activePosition, findPossibleMoves]);
 
+  // Returning board component
   return board;
 };
 export default Board;
