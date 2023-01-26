@@ -2,7 +2,14 @@
   width: 640px;
   height: 640px;
   margin: 20px;
+  border-radius: 1rem;
+
   border: 20px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
   display: flex;
 }
 
@@ -10,19 +17,41 @@
   width: 80px;
   height: 80px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   cursor: pointer;
 
-  transition: 200ms ease-in-out;
+  transition: 100ms ease-in-out;
 }
 
-.white {
+.square.white {
   background: white;
 }
 
-.black {
+.square.black {
   background: rgb(74, 74, 74);
 }
 
 .square:hover {
   scale: 1.1;
+}
+
+.square.active {
+  box-shadow: 0 0 10px 5px rgb(100, 100, 100);
+  border-radius: 0.5rem;
+  scale: 1.1;
+}
+
+.square.possible-move {
+  box-shadow: 0 0 10px 5px rgb(255, 217, 48);
+  border-radius: 0.5rem;
+  scale: 1.1;
+}
+
+.knight {
+  font-size: 50px;
+  color: black;
+  user-select: none;
 }
